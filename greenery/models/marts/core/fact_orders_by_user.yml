@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: fact_orders_by_user
+    description: Aggregated orders information by user
+    columns:
+      - name: USER_ID
+          - uniqueness
