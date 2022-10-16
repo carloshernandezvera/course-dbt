@@ -1,9 +1,0 @@
-What is our user repeat rate?
-
-
-Query:
-
-SELECT SUM(CASE WHEN NUM_ORDERS > 1 THEN 1 ELSE 0 END) / COUNT(USER_ID)
-FROM fact_orders_by_user
-
-Answer: 79.83%
