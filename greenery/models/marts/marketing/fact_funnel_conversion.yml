@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: fact_funnel_conversion
+    description: Funnel User conversion data with purchases information

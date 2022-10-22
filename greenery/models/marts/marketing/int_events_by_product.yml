@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: int_events_by_product
+    description: View and add to cart events for each product
