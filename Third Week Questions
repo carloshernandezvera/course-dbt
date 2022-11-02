@@ -1,0 +1,60 @@
+What is our overall conversion rate?
+
+SELECT COUNT(DISTINCT CASE WHEN quantity IS NOT NULL THEN session_id END)
+       /COUNT(distinct session_id)
+FROM fact_funnel_conversion;
+
+Overall Conversion Rate: 62.46%
+
+
+
+
+
+What is our conversion rate by product?
+
+SELECT product_id,
+       name,
+       COUNT(DISTINCT CASE WHEN quantity IS NOT NULL THEN session_id END)   AS purchase,
+       COUNT(DISTINCT SESSION_ID)                                           AS session,
+       COUNT(DISTINCT CASE WHEN quantity IS NOT NULL THEN session_id END)/
+       COUNT(DISTINCT SESSION_ID)                                           AS conversion_rate
+FROM fact_funnel_conversion
+    LEFT JOIN stg_greenery_products sgp
+        USING(product_id)
+GROUP BY name, product_id;
+
+
+Conversion Rate by Product:
+
+| NAME	                |	CONVERSION_RATE       | 
+| --------------------- | --------------------- |
+| String of pearls	    | 	0.609375            |
+| Arrow Head		        | 	0.555556            |
+| Pilea Peperomioides		| 	0.474576            |
+| Philodendron		      | 	0.483871            |
+| Rubber Plant		      | 	0.518519            |
+| Cactus		            | 	0.545455            |
+| Aloe Vera		          | 	0.492308            |
+| Bird of Paradise		  | 	0.450000            |
+| Angel Wings Begonia		| 	0.393443            |
+| Birds Nest Fern	      | 	0.423077            |
+| Peace Lily	          | 	0.409091            |
+| Alocasia Polly		    | 	0.411765            |
+| Money Tree		        | 	0.464286            |
+| Orchid		            | 	0.453333            |
+| Spider Plant		      | 	0.474576            |
+| Boston Fern		        | 	0.412698            |
+| Ponytail Palm		      | 	0.400000            |
+| Monstera	            | 	0.510204            |
+| Bamboo		            | 	0.537313            |
+| Majesty Palm		      | 	0.492537            |
+| Jade Plant		        | 	0.478261            |
+| Pothos		            | 	0.344262            |
+| Ficus		              | 	0.426471            |
+| ZZ Plant		          | 	0.539683            |
+| Pink Anthurium		    | 	0.418919            |
+| Fiddle Leaf Fig		    | 	0.500000            |
+| Dragon Tree		        | 	0.467742            |
+| Calathea Makoyana		  | 	0.509434            |
+| Devil's Ivy		        | 	0.488889            |
+| Snake Plant		        | 	0.397260            |
